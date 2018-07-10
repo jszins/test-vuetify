@@ -10,6 +10,8 @@ import School from '@/components/Schools/School'
 import Region from '@/components/Regions/Region'
 
 import Activity from '@/components/Activities/Activity'
+import CreateActivity from '@/components/Activities/CreateActivity'
+import ActivityDetails from '@/components/Activities/ActivityDetails'
 
 Vue.use(Router)
 
@@ -36,9 +38,19 @@ let router = new Router({
             name:'region'
         },
         {
+            path:'/activities/create',
+            component: CreateActivity,
+            name: 'createActivity'
+        },
+        {
+            path:'/activities/:id',
+            component: ActivityDetails,
+            name:'activityDetails'
+        },
+        {
             path: '/activities',
             component: Activity,
-            name: 'activity'
+            name: 'activity',
         },
         {
             path: '**',
