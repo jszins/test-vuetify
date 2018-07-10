@@ -9,6 +9,8 @@ import School from '@/components/Schools/School'
 
 import Region from '@/components/Regions/Region'
 
+import Activity from '@/components/Activities/Activity'
+
 Vue.use(Router)
 
 let router = new Router({
@@ -32,6 +34,15 @@ let router = new Router({
             path:'/regions',
             component: Region,
             name:'region'
+        },
+        {
+            path: '/activities',
+            component: Activity,
+            name: 'activity'
+        },
+        {
+            path: '**',
+            redirect: '/'
         }
     ]
 })

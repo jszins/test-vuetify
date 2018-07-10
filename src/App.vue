@@ -65,7 +65,7 @@ export default {
   },
   data () {
     return {
-      drawer: true,
+      drawer: false,
       fixed: false,
       items: [
         {
@@ -87,6 +87,11 @@ export default {
           icon: 'terrain',
           title: 'Regions',
           name: 'region'
+        },
+        {
+          icon: 'directions_run',
+          title: 'Activities',
+          name: 'activity'
         }
 
       ],

@@ -1,5 +1,5 @@
 <template>
-    <div id="region">
+    <div id="activity">
         <v-app light>
             <v-content>
                 <v-container>
@@ -8,7 +8,7 @@
                         justify-center
                         align-center>
                         <v-flex xs12>
-                            <h1>Region Page</h1>
+                            <h1>Activity Page</h1>
                         </v-flex>
                     </v-layout>
                 </v-container> 
