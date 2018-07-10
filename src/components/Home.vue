@@ -1,5 +1,5 @@
 <template>
-<div id="app">
+<div id="home">
    <v-app light>
     <v-content>
       <section>
@@ -24,9 +24,9 @@
         >
           <v-flex xs12 sm4 class="my-3">
             <div class="text-xs-center">
-              <h2 class="headline">The best way to start developing</h2>
+              <h2 class="headline">Popular Information</h2>
               <span class="subheading">
-                Cras facilisis mi vitae nunc 
+                Quick access to what you want 
               </span>
             </div>
           </v-flex>
@@ -51,10 +51,10 @@
                 <v-flex xs12 md4>
                   <v-card class="elevation-0 transparent">
                     <v-card-text class="text-xs-center">
-                      <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
+                      <v-icon x-large class="blue--text text--lighten-2">accessibility_new</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline">Fast development</div>
+                      <div class="headline">Sports and Activities</div>
                     </v-card-title>
                     <v-card-text>
                       Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
@@ -175,7 +175,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
   props: {
     msg: String
   },
