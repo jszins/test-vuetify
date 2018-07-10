@@ -79,12 +79,17 @@ export default {
           name: 'user'
         },
         {
-          icon: 'search',
-          title: 'Find'
+          icon: 'school',
+          title: 'Schools',
+          name:'school'
+        },
+        {
+          icon: 'terrain',
+          title: 'Regions',
+          name: 'region'
         }
 
       ],
-      miniVariant: false,
       title: 'MSHSL'
     }
   }

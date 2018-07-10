@@ -46,6 +46,12 @@
                       Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
                       Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
                     </v-card-text>
+                    <v-card-actions class="layout justify-center">
+                      <v-tooltip bottom>
+                        <v-btn slot="activator" color="primary">Go</v-btn>
+                        <span>See our Staff!</span>
+                      </v-tooltip>
+                    </v-card-actions>
                   </v-card>
                 </v-flex>
                 <v-flex xs12 md4>
@@ -61,6 +67,12 @@
                       Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
                       Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
                     </v-card-text>
+                    <v-card-actions class="layout justify-center">
+                      <v-tooltip bottom>
+                        <v-btn slot="activator" color="primary">Go</v-btn>
+                        <span>See Sports and Activities!</span>
+                      </v-tooltip>
+                    </v-card-actions>
                   </v-card>
                 </v-flex>
                 <v-flex xs12 md4>
@@ -76,6 +88,12 @@
                       Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
                       Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
                     </v-card-text>
+                    <v-card-actions class="layout justify-center">
+                      <v-tooltip bottom>
+                        <v-btn slot="activator" color="primary">Go</v-btn>
+                        <span>See all Schools!</span>
+                      </v-tooltip>
+                    </v-card-actions>
                   </v-card>
                 </v-flex>
               </v-layout>
@@ -191,18 +209,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

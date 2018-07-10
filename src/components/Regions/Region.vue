@@ -1,15 +1,17 @@
 <template>
-    <div id="user">
+    <div id="school">
         <v-app light>
             <v-content>
-                <section>
+                <v-container>
                     <v-layout
                         column
                         justify-center
                         align-center>
-                            <h1>User Page</h1>
+                        <v-flex xs12>
+                            <h1>Region Page</h1>
+                        </v-flex>
                     </v-layout>
-                </section> 
+                </v-container> 
             </v-content>
         </v-app>
     </div>
