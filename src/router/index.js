@@ -7,9 +7,11 @@ import User from '@/components/Users/User'
 
 import School from '@/components/Schools/School'
 
+import RegionIndex from '@/components/Regions/RegionIndex'
 import CreateRegion from '@/components/Regions/CreateRegion'
 import Region from '@/components/Regions/Region'
 
+import ActivityIndex from '@/components/Activities/ActivityIndex'
 import Activity from '@/components/Activities/Activity'
 import CreateActivity from '@/components/Activities/CreateActivity'
 import ActivityDetails from '@/components/Activities/ActivityDetails'
@@ -34,29 +36,42 @@ let router = new Router({
             name:'school'
         },
         {
-            path:'/regions/create',
-            component: CreateRegion,
-            name:'createRegion'
-        },
-        {
             path:'/regions',
-            component: Region,
-            name:'region'
+            component: RegionIndex,
+            children: [
+                        
+                {
+                    path:'',
+                    component: Region,
+                    name:'region'
+                },
+                {
+                    path:'create',
+                    component: CreateRegion,
+                    name:'createRegion'
+                }
+            ]
         },
         {
-            path:'/activities/create',
-            component: CreateActivity,
-            name: 'createActivity'
-        },
-        {
-            path:'/activities/:id',
-            component: ActivityDetails,
-            name:'activityDetails'
-        },
-        {
-            path: '/activities',
-            component: Activity,
-            name: 'activity',
+            path:'/activities',
+            component: ActivityIndex,
+            children: [
+                {
+                    path: '',
+                    component: Activity,
+                    name: 'activity',
+                },
+                {
+                    path:'create',
+                    component: CreateActivity,
+                    name: 'createActivity'
+                },
+                {
+                    path:':id',
+                    component: ActivityDetails,
+                    name:'activityDetails'
+                },
+            ]
         },
         {
             path: '**',

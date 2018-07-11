@@ -21,7 +21,7 @@
                 >
                 <v-layout
                     column
-                    justify-center
+                    align-center
                 >
                     <v-flex>
                             <v-expansion-panel
@@ -31,25 +31,24 @@
                                 v-for="(region, i) in regions"
                                 :key="i"
                             >
-                                <div slot="header">{{ region.name }}</div>
+                                <div slot="header" class="font-weight-regular headline text-xs-left text-lg-center">{{ region.name }}</div>
                                 <v-card>
-                                    <v-card-text 
+                                    <v-card-actions 
                                         v-for="(activity, i) in activities"
                                         :key="i" 
-                                        class="white black--text"
+                                        class="white black--text text-xs-left text-lg-center"
                                     >
-                                        {{ activity.info }}
-                                    </v-card-text>
+                                        <v-card-text>{{ activity.name }}</v-card-text>
+                                        <v-btn flat color="info" icon>
+                                            <v-icon>arrow_forward</v-icon> 
+                                        </v-btn>
+                                    </v-card-actions>
                                 </v-card>
                             </v-expansion-panel-content>
                             </v-expansion-panel>
                         </v-flex>
                 </v-layout>
-
-                        
                 </v-container>
-
-                    
                 <v-btn :to="{ name: 'createRegion' }">Create</v-btn> 
             </v-content>
         </v-app>

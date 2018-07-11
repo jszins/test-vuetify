@@ -24,6 +24,7 @@
               large
               dark
               active-class="disabled"
+              @click="drawer = !drawer"
             >
               <v-list-tile-title v-text="item.title"></v-list-tile-title>
             </v-btn>
@@ -35,7 +36,7 @@
       app
     >
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-toolbar-title v-text="title"><v-btn flat></v-btn></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="mr-6 mt-4">
         <v-icon class="mr-2 mb-3" large>search</v-icon>
