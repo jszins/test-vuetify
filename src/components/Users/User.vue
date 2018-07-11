@@ -1,6 +1,6 @@
 <template>
     <div id="user">
-        <v-app light>
+        <v-app dark>
             <v-content>
                 <v-layout
                 column

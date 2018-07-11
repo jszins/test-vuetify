@@ -16,40 +16,87 @@
                         </v-layout>
                     </v-container>
                 </v-jumbotron>
-                <v-container
-                    grid-list-{xs through xl}
-                >
-                <v-layout
-                    column
-                    align-center
-                >
-                    <v-flex>
-                            <v-expansion-panel
-                                light
-                                expand
-                            >
-                            <v-expansion-panel-content
-                                v-for="(region, i) in regions"
-                                :key="i"
-                            >
-                                <div slot="header" class="font-weight-regular headline text-xs-left text-lg-center">{{ region.name }}</div>
-                                <v-card >
-                                    <v-card-actions 
-                                        v-for="(activity, i) in activities"
-                                        :key="i" 
-                                        class="grey darken-2 black--text text-xs-left text-lg-center"
+                <v-flex xs12>
+                    <v-container>
+                        <v-layout row wrap>
+                            <v-flex xs12 lg4 mb-3 pa-2>
+                                    <v-expansion-panel
+                                        dark
+                                        expand
                                     >
-                                        <v-card-text>{{ activity.name }}</v-card-text>
-                                        <v-btn flat color="success" icon>
-                                            <v-icon>arrow_forward</v-icon> 
-                                        </v-btn>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-expansion-panel-content>
-                            </v-expansion-panel>
-                        </v-flex>
-                </v-layout>
-                </v-container>
+                                        <v-expansion-panel-content
+                                            v-for="(region, i) in aRegions"
+                                            :key="i"
+                                        >
+                                            <div slot="header" class="font-weight-regular headline text-xs-left text-lg-center">{{ region.A }}A</div>
+                                            <v-card >
+                                                <v-card-actions 
+                                                    v-for="(activity, i) in activities"
+                                                    :key="i" 
+                                                    class="grey black--text text-xs-left text-lg-center"
+                                                >
+                                                    <v-card-text>{{ activity.name }}</v-card-text>
+                                                    <v-btn flat color="black" icon>
+                                                        <v-icon>arrow_forward</v-icon> 
+                                                    </v-btn>
+                                                </v-card-actions>
+                                            </v-card>
+                                        </v-expansion-panel-content>
+                                    </v-expansion-panel>
+                                </v-flex>
+                                <v-flex xs12 lg4 mb-3 pa-2>
+                                    <v-expansion-panel
+                                        dark
+                                        expand
+                                    >
+                                        <v-expansion-panel-content
+                                            v-for="(region, i) in aaRegions"
+                                            :key="i"
+                                        >
+                                            <div slot="header" class="font-weight-regular headline text-xs-left text-lg-center">{{ region.AA }}AA</div>
+                                            <v-card >
+                                                <v-card-actions 
+                                                    v-for="(activity, i) in activities"
+                                                    :key="i" 
+                                                    class="grey black--text text-xs-left text-lg-center"
+                                                >
+                                                    <v-card-text>{{ activity.name }}</v-card-text>
+                                                    <v-btn flat color="black" icon>
+                                                        <v-icon>arrow_forward</v-icon> 
+                                                    </v-btn>
+                                                </v-card-actions>
+                                            </v-card>
+                                        </v-expansion-panel-content>
+                                    </v-expansion-panel>
+                                </v-flex>
+                                <v-flex xs12 lg4 mb-3 pa-2>
+                                    <v-expansion-panel
+                                        dark
+                                        expand
+                                    >
+                                        <v-expansion-panel-content
+                                            v-for="(region, i) in aaaRegions"
+                                            :key="i"
+                                        >
+                                            <div slot="header" class="font-weight-regular headline text-xs-left text-lg-center">{{ region.AAA }}AAA</div>
+                                            <v-card >
+                                                <v-card-actions 
+                                                    v-for="(activity, i) in activities"
+                                                    :key="i" 
+                                                    class="grey black--text text-xs-left text-lg-center"
+                                                >
+                                                    <v-card-text>{{ activity.name }}</v-card-text>
+                                                    <v-btn flat color="black" icon>
+                                                        <v-icon>arrow_forward</v-icon> 
+                                                    </v-btn>
+                                                </v-card-actions>
+                                            </v-card>
+                                        </v-expansion-panel-content>
+                                    </v-expansion-panel>
+                                </v-flex>
+                        </v-layout>
+                    </v-container>
+                </v-flex>
                 <v-btn :to="{ name: 'createRegion' }">Create</v-btn> 
             </v-content>
         </v-app>
@@ -62,14 +109,18 @@ import { db } from '@/main.js'
 export default {
     data() {
         return {
-            regions: [],
+            aRegions: [],
+            aaRegions: [],
+            aaaRegions: [],
             activities: [],
             img: require('@/assets/jumbotron/regions.jpg'),
         }
     },
     firestore() {
         return {
-            regions: db.collection('list-of-regions').orderBy('name'),
+            aRegions: db.collection('list-of-aRegions').orderBy('A'),
+            aaRegions: db.collection('list-of-aaRegions').orderBy('AA'),
+            aaaRegions: db.collection('list-of-aaaRegions').orderBy('AAA'),
             activities: db.collection('list-of-activities').orderBy('name')
         }
     }
