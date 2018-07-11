@@ -103,20 +103,13 @@
       </section>
 
       <section>
-        <v-parallax src="http://www.lakeplace.com/img/2013/lake-property-for-sale-mn.jpg" height="380">
-          <v-layout column align-center justify-center>
-            <div class="headline white--text mb-3 text-xs-center">Discover what makes us great</div>
-            <em>Find out about upcoming events</em>
-            <v-btn
-              class="blue lighten-2 mt-5"
-              dark
-              large
-              href="/pre-made-themes"
-            >
-              Get Started
-            </v-btn>
-          </v-layout>
-        </v-parallax>
+          <v-carousel>
+            <v-carousel-item
+              v-for="(item,i) in items"
+              :key="i"
+              :src="item.src"
+            ></v-carousel-item>
+          </v-carousel>
       </section>
 
       <section>
@@ -202,7 +195,21 @@ export default {
       title: 'henlo',
       address: '2100 Freeway Boulevard, Brooklyn Center, MN 55430',
       phone: '763-560-2262',
-      autumn_mn: require('@/assets/parallax/minnesota-skyline.jpg')
+      autumn_mn: require('@/assets/parallax/minnesota-skyline.jpg'),
+      items: [
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+          }
+        ]
     }
   }
 }

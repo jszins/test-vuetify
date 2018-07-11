@@ -36,15 +36,10 @@
       app
     >
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title v-text="title"><v-btn flat></v-btn></v-toolbar-title>
+      <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items class="mr-6 mt-4">
+      <v-toolbar-items class="mt-4">
         <v-icon class="mr-2 mb-3" large>search</v-icon>
-        <v-flex>
-          <v-text-field class="mt-1"
-            label="Search"
-          ></v-text-field>
-        </v-flex>
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
