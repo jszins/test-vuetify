@@ -7,6 +7,7 @@ import User from '@/components/Users/User'
 
 import School from '@/components/Schools/School'
 
+import CreateRegion from '@/components/Regions/CreateRegion'
 import Region from '@/components/Regions/Region'
 
 import Activity from '@/components/Activities/Activity'
@@ -31,6 +32,11 @@ let router = new Router({
             path:'/schools',
             component: School,
             name:'school'
+        },
+        {
+            path:'/regions/create',
+            component: CreateRegion,
+            name:'createRegion'
         },
         {
             path:'/regions',

@@ -1,80 +1,82 @@
 <template>
     <div id="activity">
-        <v-app light>
+        <v-app dark>
             <v-content>
-                <v-jumbotron  :gradient="gradient" light>
+                <v-jumbotron :src="img" light>
                     <v-container fill-height>
-                        <v-layout align-content>
-                            <v-flex class="text-xs-center">
-                                <h3 class="display-3">Activity page</h3>
-
-                                <span class="subheading">All current activities will be displayed here</span>
+                        <v-layout align-content class="mt-5">
+                            <v-flex class="white--text">
+                                <h3 class="text-sm-left text-lg-center display-3">Activities</h3>
 
                                 <v-divider class="my-3"></v-divider>
 
-                                <div class="title mb-3">List of all activities!</div>
+                                <div class="title text-sm-left text-lg-center mb-3">List of all activities!</div>
 
-                                <v-btn
-                                    class="mx-0"
-                                    color="primary"
-                                    large
-                                    :to="{ name: 'home' }"
-                                >
-                                    Back to Home
-                                </v-btn>
                             </v-flex>
                         </v-layout>
                     </v-container>
                 </v-jumbotron>
-                <v-container>
+                <v-container
+                    fluid
+                    grid-list-{xs through xl}
+                >
                     <v-layout
-                        column
-                        justify-center
-                        align-center>
-                        <v-flex>
-                            <v-list two-line subheader>
-                                <v-list-tile
-                                    v-for="activity in activities"
-                                    :key="activity.key"
-                                >
-                                    <v-list-tile-content>
-                                    <v-list-tile-title>{{ activity.name }}</v-list-tile-title>
-                                    <v-list-tile-sub-title>{{ activity.info }}</v-list-tile-sub-title>
-                                    </v-list-tile-content>
+                        row
+                        wrap    
+                    >
+                        <v-flex
+                            v-for="(activity, i) in activities" 
+                            :key="i"
+                            lg3
+                            xs12
+                            class="pa-2"
+                        >
+                            <v-card color="blue-grey darken-3" >
+                                <v-card-media
+                                    :src="activity.img"
+                                    height="200px"
+                                ></v-card-media>
 
-                                    <v-list-tile-action>
+                                <v-card-title primary-title>
+                                <div>
+                                    <h3 class="headline mb-0">{{ activity.name }}</h3>
+                                    <div> {{ activity.info }} </div>
+                                </div>
+                                </v-card-title>
+
+                                <v-card-actions>
                                     <v-btn 
-                                        icon 
-                                        ripple
+                                        flat 
+                                        color="orange"
                                         active-class="disabled"
-                                        :to="{ name: 'activityDetails', params: { id: activity.key }}"
+                                        :to="{ name: 'activityDetails' }"
                                     >
-                                        <v-icon color="grey lighten-1">info</v-icon>
+                                        Check this out
                                     </v-btn>
-                                    </v-list-tile-action>
-                                </v-list-tile>
-                            </v-list>
+                                </v-card-actions>
+                            </v-card>
                         </v-flex>
                     </v-layout>
-                </v-container> 
+                </v-container>
+                <v-btn :to="{ name: 'createActivity' }">Create</v-btn> 
             </v-content>
         </v-app>
     </div>
 </template>
 
 <script>
-import { db } from '../../main.js'
+import { db } from '@/main.js'
 
 export default {
     data() {
         return {
             activities: [],
-            gradient: 'to top, #424242, #FAFAFA'
+            img: require('@/assets/jumbotron/activities.jpg')
         }
     },
     firestore() {
         return {
-            activities: db.collection('list-of-activities')
+            activities: db.collection('list-of-activities').orderBy('name')
         }
     }
 }

@@ -6,26 +6,14 @@
             align-center 
             >
                 <v-flex class="text-xs-center">
-                    <h1>Temp Create Activity Page</h1>
-                    <v-form ref="form">
+                    <h1>Temp Create Region Page</h1>
+                    <v-form ref="form" @submit="submit">
                         <v-text-field
                         v-model="form.name"
                         label="Name"
                         ></v-text-field>
-                        <v-text-field
-                        v-model="form.info"
-                        label="Info"
-                        ></v-text-field>
-                        <v-text-field
-                        v-model="form.location"
-                        label="Location"
-                        ></v-text-field>
-                        <v-text-field
-                        v-model="form.img"
-                        label="Image"
-                        ></v-text-field>
                         <v-btn
-                        @click="submit"
+                            @click="submit"
                         >
                             submit
                         </v-btn>
@@ -43,19 +31,15 @@ import { db } from '@/main.js'
 export default {
     data: () => ({
         form: {
-            name: '',
-            info: '',
-            location: '',
-            img: ''    
+            name: ''    
         }
     }),
 
     methods: {
         submit () {
             if (this.$refs.form.validate()) {
-                // Native form submission is not yet supported
-                db.collection('list-of-activities').add(this.form)
-                    .then(() => this.$router.push('/activities'))
+                db.collection('list-of-regions').add(this.form)
+                    .then(() => this.$router.push('/regions'))
                     .catch(err => alert(err))
             }
         },

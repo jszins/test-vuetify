@@ -1,39 +1,21 @@
 <template>
 <div id="activityDetails">
-    <v-app light>
-        <v-content 
-            v-for="activity in activities"
-            :key="activity.key"
+    <v-app dark>
+        <section 
+            v-for="(activity, index) in activities"
+            :key="index"
         >
-            <v-layout>
-                <v-flex xs12 sm6 offset-sm3>
-                    <v-card>
-                        <v-card-media
-                        src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
-                        height="200px"
-                        ></v-card-media>
-
-                        <v-card-title primary-title>
-                        <div>
-                            <h3 class="headline mb-0">{{ activity.name }}</h3>
-                            <div> {{ activity.info }} <br> {{ activity.location }}</div>
-                        </div>
-                        </v-card-title>
-
-                        <v-card-actions>
-                            <v-btn 
-                                flat 
-                                color="orange"
-                                active-class="disabled"
-                                :to="{ name: 'activity' }"
-                            >
-                                Back to Activity List
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-flex>
-            </v-layout>
-        </v-content>
+            <v-content 
+            :key="index"
+            v-if="index == id"
+            >
+                <v-layout>
+                    <v-flex xs12 sm6 offset-sm3>
+                        
+                    </v-flex>
+                </v-layout>
+            </v-content>
+        </section>      
     </v-app>
 </div>
   
@@ -51,7 +33,7 @@ export default {
     },
     firestore() {
         return {
-            activities: db.collection('list-of-activities').where("key", "==", this.id)
+            activities: db.collection('list-of-activities')
         }
     }
 }

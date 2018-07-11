@@ -3,12 +3,12 @@
    <v-app light>
     <v-content>
       <section>
-        <v-parallax src="http://alphanewsmn.com/wp-content/uploads/2018/02/636194964102559041-285243240_MN.jpg" height="600">
+        <v-parallax :src="autumn_mn" height="600">
           <v-layout
             column
             align-center
             justify-center
-            class="black--text"
+            class="white--text"
           >
             <h1 class="mb-2 display-1 text-sm-left text-lg-center">Minnesota State High School League</h1>
           </v-layout>
@@ -201,7 +201,8 @@ export default {
     return {
       title: 'henlo',
       address: '2100 Freeway Boulevard, Brooklyn Center, MN 55430',
-      phone: '763-560-2262'
+      phone: '763-560-2262',
+      autumn_mn: require('@/assets/parallax/minnesota-skyline.jpg')
     }
   }
 }
