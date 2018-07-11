@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-navigation-drawer
       persistent
       v-model="drawer"
@@ -19,14 +19,14 @@
           <v-list-tile-content>
             <v-btn 
               :to="{ name: item.name }" 
-              color="secondary"
+              color="primary"
               flat
               large
-              dark
+              light
               active-class="disabled"
               @click="drawer = !drawer"
             >
-              <v-list-tile-title v-text="item.title"></v-list-tile-title>
+              <v-list-tile-title v-text="item.title" class="white--text"></v-list-tile-title>
             </v-btn>
           </v-list-tile-content>
         </v-list-tile>

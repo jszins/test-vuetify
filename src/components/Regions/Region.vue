@@ -25,21 +25,22 @@
                 >
                     <v-flex>
                             <v-expansion-panel
-                            expand
+                                light
+                                expand
                             >
                             <v-expansion-panel-content
                                 v-for="(region, i) in regions"
                                 :key="i"
                             >
                                 <div slot="header" class="font-weight-regular headline text-xs-left text-lg-center">{{ region.name }}</div>
-                                <v-card>
+                                <v-card >
                                     <v-card-actions 
                                         v-for="(activity, i) in activities"
                                         :key="i" 
-                                        class="white black--text text-xs-left text-lg-center"
+                                        class="grey darken-2 black--text text-xs-left text-lg-center"
                                     >
                                         <v-card-text>{{ activity.name }}</v-card-text>
-                                        <v-btn flat color="info" icon>
+                                        <v-btn flat color="success" icon>
                                             <v-icon>arrow_forward</v-icon> 
                                         </v-btn>
                                     </v-card-actions>

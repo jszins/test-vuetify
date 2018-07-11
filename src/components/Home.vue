@@ -1,6 +1,6 @@
 <template>
 <div id="home">
-   <v-app light>
+   <v-app dark>
     <v-content>
       <section>
         <v-parallax :src="autumn_mn" height="600">
