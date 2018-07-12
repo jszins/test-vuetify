@@ -25,8 +25,8 @@
                         wrap    
                     >
                         <v-flex
-                            v-for="(activity, i) in activities" 
-                            :key="i"
+                            v-for="activity in activities" 
+                            :key="activity.id"
                             lg3
                             xs12
                             class="pa-2"
@@ -49,7 +49,7 @@
                                         flat 
                                         color="orange"
                                         active-class="disabled"
-                                        :to="{ name: 'activityDetails' }"
+                                        :to="{ name: 'activityDetails', params: { id: activity.id} }"
                                     >
                                         Check this out
                                     </v-btn>
@@ -74,7 +74,7 @@ export default {
     },
     computed: {
         activities () {
-            return this.$store.getters.loadedMeetups
+            return this.$store.getters.loadedActivities
         }
     }
 }
