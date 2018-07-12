@@ -9,7 +9,7 @@ import CreateActivity from '@/components/Activities/CreateActivity'
 import ActivityDetails from '@/components/Activities/ActivityDetails'
 
 import AdminIndex from '@/components/Admins/AdminIndex'
-import Admin from '@/components/Admins/Admin'
+import SignIn from '@/components/Admins/SignIn'
 
 import RegionIndex from '@/components/Regions/RegionIndex'
 import CreateRegion from '@/components/Regions/CreateRegion'
@@ -35,9 +35,9 @@ let router = new Router({
             component: AdminIndex,
             children: [
                 {
-                    path:'',
-                    component: Admin,
-                    name:'admin'
+                    path:'sign-in',
+                    component: SignIn,
+                    name:'signIn'
                 }
             ]
         },
@@ -79,6 +79,7 @@ let router = new Router({
                 },
                 {
                     path:':id',
+                    props: true,
                     component: ActivityDetails,
                     name:'activityDetails'
                 },

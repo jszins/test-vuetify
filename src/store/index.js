@@ -20,27 +20,28 @@ export const store = new Vuex.Store({
                 name:"Golf",
                 id:"fdsadhfds"
             },
-            {
-                img:"https://cdn4.sportngin.com/attachments/photo/2596/3948/fb_td_pic.jpeg",
-                info:"We're kinda bad at it",
-                location:"10001 Hookie Lane",
-                name:"Football",
-                id:"fhgdsuajkl" 
-            },
-            {
-                img:"https://nulltx.com/wp-content/uploads/2015/07/debate.jpg",
-                info:"Michael John Keprios Everett",
-                name:"Debate",
-                location:"Who cares",
-                id:"fdhakjbavcx"
-            }
         ],
         admin: {
             id:"dfashfcdsa",
         }
     },
-    mutations: {},
-    actions: {},
+    mutations: {
+        createActivity (state, payload) {
+            state.loadedActivities.push(payload)
+        }
+    },
+    actions: {
+        createActivity ({commit}, payload) {
+            const activity = {
+                name: payload.name,
+                info: payload.info,
+                img:payload.img,
+                location:payload.location,
+            }
+            // Reach out to firestore
+            commit('createActivity', activity)
+        }
+    },
     getters: {
         loadedActivities (state) {
             return state.loadedActivities.sort((activityA, activityB) => {

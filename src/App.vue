@@ -108,9 +108,9 @@ export default {
         },
         {
           icon: 'account_circle',
-          title: 'Administration',
-          name: 'admin',
-          msg: 'Admin Page'
+          title: 'Sign In',
+          name: 'signIn',
+          msg: 'Sign In'
         },
         {
           icon: 'school',

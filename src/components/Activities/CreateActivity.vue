@@ -1,34 +1,35 @@
 <template>
-    <v-app light>
+    <v-app dark>
         <v-content>
             <v-layout
-            column
-            align-center 
+                row
+                align-center 
             >
-                <v-flex class="text-xs-center">
+                <v-flex class="text-xs-center" xs12 sm6 offset-sm3>
                     <h1>Temp Create Activity Page</h1>
                     <v-form ref="form">
                         <v-text-field
-                        v-model="form.name"
-                        label="Name"
+                            required
+                            v-model="form.name"
+                            label="Name"
                         ></v-text-field>
                         <v-text-field
-                        v-model="form.info"
-                        label="Info"
+                            required
+                            v-model="form.info"
+                            label="Info"
+                            multi-line
                         ></v-text-field>
                         <v-text-field
-                        v-model="form.location"
-                        label="Location"
+                            required
+                            v-model="form.location"
+                            label="Location"
                         ></v-text-field>
                         <v-text-field
-                        v-model="form.img"
-                        label="Image"
+                            required
+                            v-model="form.img"
+                            label="Image"
                         ></v-text-field>
-                        <v-btn
-                        @click="submit"
-                        >
-                            submit
-                        </v-btn>
+                        <v-btn @click="submit" :disabled="!formIsValid">submit</v-btn>
                         <v-btn @click="clear">clear</v-btn>
                     </v-form>
                 </v-flex>
@@ -46,18 +47,31 @@ export default {
             name: '',
             info: '',
             location: '',
-            img: ''    
+            img: '',  
         }
     }),
+    computed: {
+        formIsValid () {
+            return this.form.name !== '' 
+                && this.form.info !== '' 
+                && this.form.location !== '' 
+                && this.form.img !== '' 
+        }
+    },
 
     methods: {
         submit () {
-            if (this.$refs.form.validate()) {
-                // Native form submission is not yet supported
-                db.collection('list-of-activities').add(this.form)
-                    .then(() => this.$router.push('/activities'))
-                    .catch(err => alert(err))
+            if (!this.formIsValid) {
+                return
             }
+            const activityData = {
+                name: this.form.name,
+                info: this.form.info,
+                location: this.form.location,
+                img: this.form.img
+            }
+            this.$store.dispatch('createActivity', activityData)
+            this.$router.push('/activities')
         },
         clear () {
             this.$refs.form.reset()
