@@ -12,14 +12,14 @@
                             <v-text-field
                             ref="name"
                             required
-                            :rules="[() => !!name || 'This field is required']"
+                            :rules="[() => !!form.email || 'This field is required']"
                             v-model="form.email"
                             label="Email"
                             ></v-text-field>
                             <v-text-field
                             ref="password"
                             required
-                            :rules="[() => !!password || 'This field is required']"
+                            :rules="[() => !!form.password || 'This field is required']"
                             v-model="form.password"
                             type="password"
                             label="Password"

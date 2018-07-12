@@ -8,6 +8,7 @@ import Activity from '@/components/Activities/Activity'
 import CreateActivity from '@/components/Activities/CreateActivity'
 import ActivityDetails from '@/components/Activities/ActivityDetails'
 
+import AdminIndex from '@/components/Admins/AdminIndex'
 import Admin from '@/components/Admins/Admin'
 
 import RegionIndex from '@/components/Regions/RegionIndex'
@@ -31,8 +32,14 @@ let router = new Router({
         },
         {
             path:'/admins',
-            component: Admin,
-            name: 'admin'
+            component: AdminIndex,
+            children: [
+                {
+                    path:'',
+                    component: Admin,
+                    name:'admin'
+                }
+            ]
         },
         {
             path:'/schools',
