@@ -3,18 +3,22 @@ import Router from 'vue-router'
 
 import Home from '@/components/Home'
 
-import User from '@/components/Users/User'
+import ActivityIndex from '@/components/Activities/ActivityIndex'
+import Activity from '@/components/Activities/Activity'
+import CreateActivity from '@/components/Activities/CreateActivity'
+import ActivityDetails from '@/components/Activities/ActivityDetails'
 
-import School from '@/components/Schools/School'
+import Admin from '@/components/Admins/Admin'
 
 import RegionIndex from '@/components/Regions/RegionIndex'
 import CreateRegion from '@/components/Regions/CreateRegion'
 import Region from '@/components/Regions/Region'
 
-import ActivityIndex from '@/components/Activities/ActivityIndex'
-import Activity from '@/components/Activities/Activity'
-import CreateActivity from '@/components/Activities/CreateActivity'
-import ActivityDetails from '@/components/Activities/ActivityDetails'
+import School from '@/components/Schools/School'
+
+import Search from '@/components/Search/Search'
+
+
 
 Vue.use(Router)
 
@@ -26,9 +30,9 @@ let router = new Router({
             name:'home'
         },
         {
-            path:'/users',
-            component: User,
-            name: 'user'
+            path:'/admins',
+            component: Admin,
+            name: 'admin'
         },
         {
             path:'/schools',
@@ -72,6 +76,11 @@ let router = new Router({
                     name:'activityDetails'
                 },
             ]
+        },
+        {
+            path:'/search',
+            component: Search,
+            name:'search'
         },
         {
             path: '**',

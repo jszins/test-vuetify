@@ -1,5 +1,5 @@
 <template>
-    <div id="user">
+    <div id="admin">
         <v-app dark>
             <v-content>
                 <v-layout
@@ -7,7 +7,7 @@
                 align-center 
                 >
                     <v-flex class="text-xs-center">
-                        <h1>Temp Sign In Page</h1>
+                        <h1>Admin Sign In Page</h1>
                         <v-form ref="form" @submit="submit">
                             <v-text-field
                             ref="name"

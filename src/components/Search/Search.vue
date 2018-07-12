@@ -1,5 +1,5 @@
 <template>
-    <div id="school">
+    <div id="search">
         <v-app dark>
             <v-content>
                 <v-container>
@@ -8,7 +8,7 @@
                         justify-center
                         align-center>
                         <v-flex xs12>
-                            <h1>School Page</h1>
+                            <h1>Search Page</h1>
                         </v-flex>
                     </v-layout>
                 </v-container> 

@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app light>
     <v-navigation-drawer
       persistent
       v-model="drawer"
@@ -26,20 +26,56 @@
               active-class="disabled"
               @click="drawer = !drawer"
             >
-              <v-list-tile-title v-text="item.title" class="white--text"></v-list-tile-title>
-            </v-btn>
+              <v-list-tile-title v-text="item.title"></v-list-tile-title>
+            </v-btn>            
           </v-list-tile-content>
         </v-list-tile>
+        <v-btn 
+          @click.stop="drawer = !drawer" 
+          color="error" 
+          raised 
+          left
+        >
+          Close
+        </v-btn>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar
       app
     >
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
+      <v-btn 
+        flat 
+        :to="{ name: 'home' }"
+        active-class="disabled"
+      >
+        <v-toolbar-title v-text="title"></v-toolbar-title>
+      </v-btn>
+      
       <v-spacer></v-spacer>
-      <v-toolbar-items class="mt-4">
-        <v-icon class="mr-2 mb-3" large>search</v-icon>
+      <v-toolbar-items 
+        class="mt-3 hidden-sm-and-down"
+        v-for="item in items"
+        :key="item.title"
+      >
+        <v-tooltip bottom>
+          <v-btn
+            active-class="disabled" 
+            flat 
+            slot="activator"
+            :to="{ name: item.name }"
+          >
+            <v-icon 
+              class="mr-2 mb-3" 
+              color="primary" 
+              large
+            >
+              {{ item.icon }}
+            </v-icon>
+          </v-btn>
+          <span>{{ item.msg }}</span>
+        </v-tooltip>
+          
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
@@ -67,29 +103,39 @@ export default {
         {
           icon: 'home',
           title: 'Home',
-          name: 'home'
+          name: 'home',
+          msg: 'Back to Home'
         },
         {
           icon: 'account_circle',
-          title: 'User Page',
-          name: 'user'
+          title: 'Administration',
+          name: 'admin',
+          msg: 'Admin Page'
         },
         {
           icon: 'school',
           title: 'Schools',
-          name:'school'
+          name:'school',
+          msg: 'View Schools'
         },
         {
           icon: 'terrain',
           title: 'Regions',
-          name: 'region'
+          name: 'region',
+          msg: 'View Regions'
         },
         {
           icon: 'directions_run',
           title: 'Activities',
-          name: 'activity'
+          name: 'activity',
+          msg: 'View Activities'
+        },
+        {
+          icon: 'search',
+          title: 'Find',
+          name: 'search',
+          msg: 'Find'
         }
-
       ],
       title: 'MSHSL'
     }
