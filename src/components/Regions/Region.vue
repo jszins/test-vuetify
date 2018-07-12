@@ -7,11 +7,8 @@
                         <v-layout align-content class="mt-5">
                             <v-flex class="white--text">
                                 <h3 class="text-sm-left text-lg-center display-3">Regions</h3>
-
                                 <v-divider class="my-3"></v-divider>
-
                                 <div class="title text-sm-left text-lg-center mb-3">Click a region to view its related content</div>
-
                             </v-flex>
                         </v-layout>
                     </v-container>
@@ -29,17 +26,25 @@
                                             :key="i"
                                         >
                                             <div slot="header" class="font-weight-regular headline text-xs-left text-lg-center">{{ region.A }}A</div>
-                                            <v-card >
-                                                <v-card-actions 
-                                                    v-for="(activity, i) in activities"
-                                                    :key="i" 
-                                                    class="grey black--text text-xs-left text-lg-center"
-                                                >
-                                                    <v-card-text>{{ activity.name }}</v-card-text>
-                                                    <v-btn flat color="black" icon>
-                                                        <v-icon>arrow_forward</v-icon> 
-                                                    </v-btn>
-                                                </v-card-actions>
+                                            <v-card>
+                                                <v-container fluid>
+                                                    <v-layout row wrap>
+                                                        <v-flex xs12>
+                                                            <template v-for="(activity, i) in activities">
+                                                                <v-card-actions 
+                                                                    :key="activity.name"
+                                                                    class="grey"
+                                                                >
+                                                                    <v-btn block flat color="black">
+                                                                        {{ activity.name }}
+                                                                        <v-icon right>arrow_forward</v-icon> 
+                                                                    </v-btn>                                                                    
+                                                                </v-card-actions>
+                                                                <v-divider :key="i"></v-divider>
+                                                            </template>                                                        
+                                                        </v-flex>
+                                                    </v-layout>
+                                                </v-container>                                                
                                             </v-card>
                                         </v-expansion-panel-content>
                                     </v-expansion-panel>
@@ -54,17 +59,25 @@
                                             :key="i"
                                         >
                                             <div slot="header" class="font-weight-regular headline text-xs-left text-lg-center">{{ region.AA }}AA</div>
-                                            <v-card >
-                                                <v-card-actions 
-                                                    v-for="(activity, i) in activities"
-                                                    :key="i" 
-                                                    class="grey black--text text-xs-left text-lg-center"
-                                                >
-                                                    <v-card-text>{{ activity.name }}</v-card-text>
-                                                    <v-btn flat color="black" icon>
-                                                        <v-icon>arrow_forward</v-icon> 
-                                                    </v-btn>
-                                                </v-card-actions>
+                                            <v-card>
+                                                <v-container fluid>
+                                                    <v-layout row wrap>
+                                                        <v-flex xs12>
+                                                            <template v-for="(activity, i) in activities">
+                                                                <v-card-actions 
+                                                                    :key="activity.name"
+                                                                    class="grey"
+                                                                >
+                                                                    <v-btn block flat color="black">
+                                                                        {{ activity.name }}
+                                                                        <v-icon right>arrow_forward</v-icon> 
+                                                                    </v-btn>                                                                    
+                                                                </v-card-actions>
+                                                                <v-divider :key="i"></v-divider>
+                                                            </template>                                                        
+                                                        </v-flex>
+                                                    </v-layout>
+                                                </v-container>                                                
                                             </v-card>
                                         </v-expansion-panel-content>
                                     </v-expansion-panel>
@@ -79,17 +92,25 @@
                                             :key="i"
                                         >
                                             <div slot="header" class="font-weight-regular headline text-xs-left text-lg-center">{{ region.AAA }}AAA</div>
-                                            <v-card >
-                                                <v-card-actions 
-                                                    v-for="(activity, i) in activities"
-                                                    :key="i" 
-                                                    class="grey black--text text-xs-left text-lg-center"
-                                                >
-                                                    <v-card-text>{{ activity.name }}</v-card-text>
-                                                    <v-btn flat color="black" icon>
-                                                        <v-icon>arrow_forward</v-icon> 
-                                                    </v-btn>
-                                                </v-card-actions>
+                                            <v-card>
+                                                <v-container fluid>
+                                                    <v-layout row wrap>
+                                                        <v-flex xs12>
+                                                            <template v-for="(activity, i) in activities">
+                                                                <v-card-actions 
+                                                                    :key="activity.name"
+                                                                    class="grey"
+                                                                >
+                                                                    <v-btn block flat color="black">
+                                                                        {{ activity.name }}
+                                                                        <v-icon right>arrow_forward</v-icon> 
+                                                                    </v-btn>                                                                    
+                                                                </v-card-actions>
+                                                                <v-divider :key="i"></v-divider>
+                                                            </template>                                                        
+                                                        </v-flex>
+                                                    </v-layout>
+                                                </v-container>                                                
                                             </v-card>
                                         </v-expansion-panel-content>
                                     </v-expansion-panel>

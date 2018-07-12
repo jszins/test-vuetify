@@ -65,18 +65,16 @@
 </template>
 
 <script>
-import { db } from '@/main.js'
 
 export default {
     data() {
         return {
-            activities: [],
             img: require('@/assets/jumbotron/activities.jpg')
         }
     },
-    firestore() {
-        return {
-            activities: db.collection('list-of-activities').orderBy('name')
+    computed: {
+        activities () {
+            return this.$store.getters.loadedMeetups
         }
     }
 }
