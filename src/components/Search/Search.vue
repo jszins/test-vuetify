@@ -11,6 +11,7 @@
                                 single-line
                                 v-model="query"
                             ></v-text-field>
+                            <v-btn @click="search">Try</v-btn>
                             </v-flex>
                         </v-layout>
                     </v-container>
@@ -32,13 +33,8 @@ export default {
     },
     methods: {
         search () {
-            axios.get('http://localhost:9200/staff/_doc/_search', {
-                params:
-                {
-                    source: JSON.stringify(this.query),
-                    source_content_type: 'application/json'
-                } 
-            }).then(res => console.log(res))
+            axios.get('http://localhost:9200/staff/_doc/_search')
+                .then(res => console.log(res))
         }
     },
     watch: {
