@@ -5,14 +5,12 @@ import Home from '@/components/Home'
 
 import ActivityIndex from '@/components/Activities/ActivityIndex'
 import Activity from '@/components/Activities/Activity'
-import CreateActivity from '@/components/Activities/CreateActivity'
 import ActivityDetails from '@/components/Activities/ActivityDetails'
 
 import AdminIndex from '@/components/Admins/AdminIndex'
 import SignIn from '@/components/Admins/SignIn'
 
 import RegionIndex from '@/components/Regions/RegionIndex'
-import CreateRegion from '@/components/Regions/CreateRegion'
 import Region from '@/components/Regions/Region'
 
 import School from '@/components/Schools/School'
@@ -49,18 +47,12 @@ let router = new Router({
         {
             path:'/regions',
             component: RegionIndex,
-            children: [
-                        
+            children: [    
                 {
                     path:'',
                     component: Region,
                     name:'region'
                 },
-                {
-                    path:'create',
-                    component: CreateRegion,
-                    name:'createRegion'
-                }
             ]
         },
         {
@@ -71,11 +63,6 @@ let router = new Router({
                     path: '',
                     component: Activity,
                     name: 'activity',
-                },
-                {
-                    path:'create',
-                    component: CreateActivity,
-                    name: 'createActivity'
                 },
                 {
                     path:':id',

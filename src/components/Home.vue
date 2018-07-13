@@ -1,19 +1,18 @@
 <template>
 <div id="home">
-   <v-app dark>
+   <v-app light>
     <v-content>
       <section>
-        <v-parallax :src="autumn_mn" height="600">
-          <v-layout
-            column
-            align-center
-            justify-center
-            class="white--text"
-          >
-            <h1 class="mb-2 display-1 text-sm-left text-lg-center">Minnesota State High School League</h1>
-          </v-layout>
-        </v-parallax>
+        <h1 class="mb-2 display-1 text-xs-left text-sm-center">Minnesota State High School League</h1>
+          <v-carousel>
+            <v-carousel-item
+              v-for="(item,i) in items"
+              :key="i"
+              :src="item.src"
+            ></v-carousel-item>
+          </v-carousel>
       </section>
+      
 
       <section>
         <v-layout
@@ -103,14 +102,17 @@
       </section>
 
       <section>
-          <v-carousel>
-            <v-carousel-item
-              v-for="(item,i) in items"
-              :key="i"
-              :src="item.src"
-            ></v-carousel-item>
-          </v-carousel>
+        <v-parallax :src="autumn_mn" height="500">
+          <v-layout
+            column
+            align-center
+            justify-center
+          >           
+          </v-layout>
+        </v-parallax>
       </section>
+
+      
 
       <section>
         <v-container grid-list-xl>

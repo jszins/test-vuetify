@@ -5,7 +5,6 @@ import App from './App.vue'
 import router from './router'
 import VueFire from 'vuefire'
 import firebase from 'firebase/app'
-import { store } from './store'
 
 import 'firebase/auth'
 import 'firebase/firestore'
@@ -31,5 +30,4 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
   router,
-  store
 }).$mount('#app')

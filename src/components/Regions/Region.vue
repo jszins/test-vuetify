@@ -118,31 +118,17 @@
                         </v-layout>
                     </v-container>
                 </v-flex>
-                <v-btn :to="{ name: 'createRegion' }">Create</v-btn> 
             </v-content>
         </v-app>
     </div>
 </template>
 
 <script>
-import { db } from '@/main.js'
 
 export default {
     data() {
         return {
-            aRegions: [],
-            aaRegions: [],
-            aaaRegions: [],
-            activities: [],
             img: require('@/assets/jumbotron/regions.jpg'),
-        }
-    },
-    firestore() {
-        return {
-            aRegions: db.collection('list-of-aRegions').orderBy('A'),
-            aaRegions: db.collection('list-of-aaRegions').orderBy('AA'),
-            aaaRegions: db.collection('list-of-aaaRegions').orderBy('AAA'),
-            activities: db.collection('list-of-activities').orderBy('name')
         }
     }
 }

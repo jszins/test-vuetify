@@ -58,7 +58,6 @@
                         </v-flex>
                     </v-layout>
                 </v-container>
-                <v-btn :to="{ name: 'createActivity' }">Create</v-btn> 
             </v-content>
         </v-app>
     </div>
@@ -72,10 +71,5 @@ export default {
             img: require('@/assets/jumbotron/activities.jpg')
         }
     },
-    computed: {
-        activities () {
-            return this.$store.getters.loadedActivities
-        }
-    }
 }
 </script>

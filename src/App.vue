@@ -54,19 +54,19 @@
       
       <v-spacer></v-spacer>
       <v-toolbar-items 
-        class="mt-3 hidden-sm-and-down"
+        class="hidden-sm-and-down"
         v-for="item in items"
         :key="item.title"
       >
         <v-tooltip bottom>
           <v-btn
-            active-class="disabled" 
+            active-class="disabled"
             flat 
             slot="activator"
             :to="{ name: item.name }"
           >
             <v-icon 
-              class="mr-2 mb-3" 
+              class="mr-2" 
               color="primary" 
               large
             >
