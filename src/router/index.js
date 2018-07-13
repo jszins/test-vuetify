@@ -13,6 +13,7 @@ import SignIn from '@/components/Admins/SignIn'
 import RegionIndex from '@/components/Regions/RegionIndex'
 import Region from '@/components/Regions/Region'
 
+import SchoolIndex from '@/components/Schools/SchoolIndex'
 import School from '@/components/Schools/School'
 
 import Search from '@/components/Search/Search'
@@ -41,8 +42,14 @@ let router = new Router({
         },
         {
             path:'/schools',
-            component: School,
-            name:'school'
+            component: SchoolIndex,
+            children: [
+                {
+                    path:'',
+                    component: School,
+                    name: 'school'
+                }
+            ]
         },
         {
             path:'/regions',

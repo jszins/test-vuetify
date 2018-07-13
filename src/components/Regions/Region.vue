@@ -126,9 +126,11 @@
 <script>
 
 export default {
+
     data() {
         return {
             img: require('@/assets/jumbotron/regions.jpg'),
+            regions: []
         }
     }
 }
