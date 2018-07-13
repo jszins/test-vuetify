@@ -32,9 +32,13 @@ export default {
     },
     methods: {
         search () {
-            axios.get("http://127.0.0.1:5601/search?q=" + this.query)
-                .then(res => console.log(res))
-                .catch(err => console.log(err))
+            axios.get('http://localhost:9200/staff/_doc/_search', {
+                params:
+                {
+                    source: JSON.stringify(this.query),
+                    source_content_type: 'application/json'
+                } 
+            }).then(res => console.log(res))
         }
     },
     watch: {
