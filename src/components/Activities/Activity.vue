@@ -1,17 +1,14 @@
 <template>
     <div id="activity">
-        <v-app dark>
+        <v-app light>
             <v-content>
-                <v-jumbotron :src="img" light>
+                <v-jumbotron :src="img">
                     <v-container fill-height>
                         <v-layout align-content class="mt-5">
-                            <v-flex class="white--text">
-                                <h3 class="text-sm-left text-lg-center display-3">Activities</h3>
-
+                            <v-flex class="white--text" xs6 offset-xs3>
+                                <h3 class="background text-sm-left text-lg-center display-3">Activities</h3>
                                 <v-divider class="my-3"></v-divider>
-
-                                <div class="title text-sm-left text-lg-center mb-3">List of all activities!</div>
-
+                                <div class="background title text-sm-left text-lg-center mb-3">List of all activities!</div>
                             </v-flex>
                         </v-layout>
                     </v-container>
@@ -73,3 +70,9 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+.background {
+    background-color: rgba(0,0,0,.5);
+}
+</style>
