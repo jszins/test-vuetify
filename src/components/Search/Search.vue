@@ -10,8 +10,10 @@
                                 label="Search"
                                 single-line
                                 v-model="query"
+                                @submit="search"
                             ></v-text-field>
                             <v-btn @click="search">Try</v-btn>
+                            <p>{{ results }}</p>
                             </v-flex>
                         </v-layout>
                     </v-container>
@@ -33,13 +35,13 @@ export default {
     },
     methods: {
         search () {
-            axios.get('http://localhost:9200/staff/_doc/_search')
-                .then(res => console.log(res))
+            axios.get('http://localhost:9200/staff/_doc/_search?size=100&q=*:' + this.query)
+                .then(res => this.results.push(res.Name))
         }
     },
     watch: {
-        query () {
-            this.search();
+        query() {
+            this.search()
         }
     }
 }
