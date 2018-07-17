@@ -130,6 +130,7 @@ export default {
         this.$nextTick(() =>{
             axios.get("http://localhost:9200/schools/_search?size=4000&q=*:*")
                 .then(res => this.schools = res.data.hits.hits)
+                .catch(err => alert(err))
         })
     }
 }
@@ -140,5 +141,3 @@ export default {
     background-color: rgba(0,0,0,.5);
 }
 </style>
-
-

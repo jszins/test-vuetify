@@ -43,6 +43,7 @@ export default {
         this.$nextTick(() =>{
             axios.get("http://localhost:9200/schools/_search?size=1&q=_id:" + this.id)
                 .then(res => this.school = res.data.hits.hits[0]._source)
+                .catch(err => alert(err))
         }) 
     }
 }
