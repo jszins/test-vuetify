@@ -106,9 +106,9 @@ export default {
                 .then(() => this.staffBuf = this.staff)
                 .catch(err => alert(err))
             axios.get('http://localhost:9200/schools/_doc/_search?size=50&q=Organization:' + this.query)
-            .then(res => this.schools = res.data.hits.hits)
-            .then(() => this.schoolsBuf = this.schools)
-            .catch(err => alert(err))
+                .then(res => this.schools = res.data.hits.hits)
+                .then(() => this.schoolsBuf = this.schools)
+                .catch(err => alert(err))
         },
         toggleStaff() {
             this.staffEnabler = !this.staffEnabler
