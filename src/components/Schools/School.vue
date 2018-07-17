@@ -111,7 +111,7 @@ export default {
         }
     },
     methods: {
-        populate() {
+        rePopulate() {
             axios.get("http://localhost:9200/schools/_search?size=4000&q=Organization:" + this.query)
                 .then(res => this.schools = res.data.hits.hits)
                 .catch(err => alert(err))
@@ -123,8 +123,14 @@ export default {
     },
     watch: {
         query() {
-            this.populate()
+            this.rePopulate()
         }
+    },
+    mounted() {
+        this.$nextTick(() =>{
+            axios.get("http://localhost:9200/schools/_search?size=4000&q=*:*")
+                .then(res => this.schools = res.data.hits.hits)
+        })
     }
 }
 </script>

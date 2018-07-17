@@ -15,6 +15,7 @@ import Region from '@/components/Regions/Region'
 
 import SchoolIndex from '@/components/Schools/SchoolIndex'
 import School from '@/components/Schools/School'
+import SchoolDetails from "@/components/Schools/SchoolDetails";
 
 import Search from '@/components/Search/Search'
 
@@ -48,6 +49,11 @@ let router = new Router({
                     path:'',
                     component: School,
                     name: 'school'
+                },
+                {
+                    path:':id',
+                    component: SchoolDetails,
+                    name: 'schoolDetails'
                 }
             ]
         },
