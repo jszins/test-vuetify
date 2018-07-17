@@ -29,10 +29,10 @@
                                         <v-list-tile
                                             :key="i"
                                         >
-                                        <v-list-tile-content>
-                                            <v-list-tile-title v-html="result._source.Name"></v-list-tile-title>
-                                            <v-list-tile-sub-title v-html="result._source.Position"></v-list-tile-sub-title>
-                                        </v-list-tile-content>
+                                            <v-list-tile-content>
+                                                <v-list-tile-title v-html="result._source.Name"></v-list-tile-title>
+                                                <v-list-tile-sub-title v-html="result._source.Position"></v-list-tile-sub-title>
+                                            </v-list-tile-content>
                                         </v-list-tile>
                                     </template>
                                 </v-list>
