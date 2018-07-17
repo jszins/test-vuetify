@@ -98,11 +98,11 @@ export default {
             }  
             this.staff = []
             this.schools = []
-            axios.get('http://localhost:9200/staff/_doc/_search?size=25&q=*:' + this.query)
+            axios.get('http://localhost:9200/staff/_doc/_search?size=25&q=Name:' + this.query)
                 .then(res => this.staff = res.data.hits.hits)
                 .then(() => this.staffBuf = this.staff)
                 .catch(err => alert(err))
-            axios.get('http://localhost:9200/schools/_doc/_search?size=50&q=*:' + this.query)
+            axios.get('http://localhost:9200/schools/_doc/_search?size=50&q=Organization:' + this.query)
             .then(res => this.schools = res.data.hits.hits)
             .then(() => this.schoolsBuf = this.schools)
             .catch(err => alert(err))

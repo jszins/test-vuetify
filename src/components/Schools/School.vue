@@ -13,16 +13,116 @@
                         </v-layout>
                     </v-container>
                 </v-jumbotron>
+                <v-layout row wrap>
+                    <v-flex xs12 sm8 offset-sm2>
+                        <template>
+                            <v-text-field
+                                v-model="search"
+                                append-icon="search"
+                                label="Search"
+                                single-line
+                                hide-details
+                            ></v-text-field>
+                            <v-data-table
+                                :items="schools"
+                                :headers="headers"
+                                :search="search"
+                                class="elevation-1"
+                            >
+                                <template slot="items" slot-scope="props" >
+                                    <td>{{ props.item._source.Organization }}</td>
+                                    <td class="text-xs-right">{{ props.item._source.Physical_City }}</td>
+                                    <td class="text-xs-right">{{ props.item._source.Name }}</td>
+                                    <td class="text-xs-right">{{ props.item._source.Email }}</td>
+                                    <td class="text-xs-right">{{ props.item._source.Phone }}</td>
+                                    <td class="text-xs-right">{{ props.item._source.Mailing_Line_1 }}</td>
+                                </template>
+                            </v-data-table>
+                            <template v-for="(letter, i) in letters">
+                                <v-btn
+                                    @click="query = letter.value" 
+                                    color="info" 
+                                    round 
+                                    :key="i"
+                                >
+                                    {{ letter.value }}
+                            </v-btn>
+                            </template>
+                        </template>
+                    </v-flex>
+                </v-layout>
             </v-content>
         </v-app>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     data () {
         return {
-            img: require('@/assets/jumbotron/schools.jpg')
+            img: require('@/assets/jumbotron/schools.jpg'),
+            schools: [],
+            loading: false,
+            query: '',
+            search: '',
+            headers: [
+                {
+                    text: 'Organization',
+                    align: 'left',
+                    sortable: false,
+                    value: 'Organization'
+                },
+                { text: 'County', sortable: false, value: 'County' },
+                { text: 'Primary Contact', sortable: false, value: 'Name' },
+                { text: 'Contact Email', sortable: false, value: 'Email' },
+                { text: 'Phone', sortable: false, value: 'Phone' },
+                { text: 'Address', sortable: false, value: 'Mailing_Line_1' },
+            ],
+            letters: [
+                { value: 'A' },
+                { value: 'B' },
+                { value: 'C' },
+                { value: 'D' },
+                { value: 'E' },
+                { value: 'F' },
+                { value: 'G' },
+                { value: 'H' },
+                { value: 'I' },
+                { value: 'J' },
+                { value: 'K' },
+                { value: 'L' },
+                { value: 'M' },
+                { value: 'N' },
+                { value: 'O' },
+                { value: 'P' },
+                { value: 'Q' },
+                { value: 'R' },
+                { value: 'S' },
+                { value: 'T' },
+                { value: 'U' },
+                { value: 'V' },
+                { value: 'W' },
+                { value: 'X' },
+                { value: 'Y' },
+                { value: 'Z' }
+            ]
+        }
+    },
+    methods: {
+        populate() {
+            axios.get("http://localhost:9200/schools/_search?size=4000&q=Organization:" + this.query)
+                .then(res => this.schools = res.data.hits.hits)
+                .catch(err => alert(err))
+        },
+        changeQuery(letter) {
+            this.query = letter.text
+        }
+    },
+    watch: {
+        query() {
+            this.populate()
         }
     }
 }

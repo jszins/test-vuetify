@@ -1,6 +1,6 @@
 <template>
     <div id="admin">
-        <v-app dark>
+        <v-app light>
             <v-content>
                 <v-layout
                 column
