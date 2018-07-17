@@ -40,7 +40,7 @@
                             </v-data-table>
                             <template v-for="(letter, i) in letters">
                                 <v-btn
-                                    @click="query = letter.value" 
+                                    @click="switchView(letter)" 
                                     color="info" 
                                     round 
                                     :key="i"
@@ -72,13 +72,13 @@ export default {
                     text: 'Organization',
                     align: 'left',
                     sortable: false,
-                    value: 'Organization'
+                    value: '_source.Organization'
                 },
-                { text: 'County', sortable: false, value: 'County' },
-                { text: 'Primary Contact', sortable: false, value: 'Name' },
-                { text: 'Contact Email', sortable: false, value: 'Email' },
-                { text: 'Phone', sortable: false, value: 'Phone' },
-                { text: 'Address', sortable: false, value: 'Mailing_Line_1' },
+                { text: 'County', sortable: false, value: '_source.County' },
+                { text: 'Primary Contact', sortable: false, value: '_source.Name' },
+                { text: 'Contact Email', sortable: false, value: '_source.Email' },
+                { text: 'Phone', sortable: false, value: '_source.Phone' },
+                { text: 'Address', sortable: false, value: '_source.Mailing_Line_1' },
             ],
             letters: [
                 { value: 'A' },
@@ -116,8 +116,9 @@ export default {
                 .then(res => this.schools = res.data.hits.hits)
                 .catch(err => alert(err))
         },
-        changeQuery(letter) {
-            this.query = letter.text
+        switchView(letter) {
+            this.query = letter.value
+            this.search = ''
         }
     },
     watch: {
