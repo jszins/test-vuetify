@@ -10,7 +10,6 @@
                                     label="Search"
                                     single-line
                                     v-model="query"
-                                    @submit="search"
                                 ></v-text-field>
                             </v-flex>
                             <v-flex xs12 sm6>
@@ -102,11 +101,11 @@ export default {
             axios.get('http://localhost:9200/staff/_doc/_search?size=25&q=*:' + this.query)
                 .then(res => this.staff = res.data.hits.hits)
                 .then(() => this.staffBuf = this.staff)
-                .catch(err => console.log(err))
+                .catch(err => alert(err))
             axios.get('http://localhost:9200/schools/_doc/_search?size=50&q=*:' + this.query)
             .then(res => this.schools = res.data.hits.hits)
             .then(() => this.schoolsBuf = this.schools)
-            .catch(err => console.log(err))
+            .catch(err => alert(err))
         },
         toggleStaff() {
             this.staffEnabler = !this.staffEnabler
