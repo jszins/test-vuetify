@@ -15,7 +15,12 @@
                     </v-card-title>
                     <v-card-actions>
                         <v-btn flat color="orange">Share</v-btn>
-                        <v-btn flat color="orange">Explore</v-btn>
+                        <v-btn 
+                            flat 
+                            color="info"
+                            :href="school.Web_URL"
+                        >
+                            Check them out</v-btn>
                         <v-spacer></v-spacer>
                         <v-tooltip bottom>
                             <v-btn 
@@ -57,7 +62,7 @@ export default {
         this.$nextTick(() =>{
             axios.get("http://localhost:9200/schools/_search?size=1&q=StateOrganizationId:" + this.id)
                 .then(res => this.school = res.data.hits.hits[0]._source)
-                .catch(err => alert(err))
+                .catch(err => alert('Whoops! No school selected'))
         }) 
     }
 }
