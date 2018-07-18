@@ -38,6 +38,11 @@
                                     <td class="text-xs-right">{{ props.item._source.Email }}</td>
                                     <td class="text-xs-right">{{ props.item._source.Phone }}</td>
                                     <td class="text-xs-right">{{ props.item._source.Mailing_Line_1 }}</td>
+                                    <td class="text-xs-right">
+                                        <v-btn icon color="primary" :to="{ name: 'schoolDetails', params: { id: props.item._source.StateOrganizationId}}">
+                                            <v-icon>forward</v-icon>
+                                        </v-btn>
+                                    </td>
                                 </template>
                             </v-data-table>
                             <template v-for="(letter, i) in letters">
@@ -81,6 +86,7 @@ export default {
                 { text: 'Contact Email', sortable: false, value: '_source.Email' },
                 { text: 'Phone', sortable: false, value: '_source.Phone' },
                 { text: 'Address', sortable: false, value: '_source.Mailing_Line_1' },
+                { text: 'Link', sortable: false, value: '_source.StateOrganizationId'}
             ],
             letters: [
                 { value: 'A' },

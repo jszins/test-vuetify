@@ -16,6 +16,20 @@
                     <v-card-actions>
                         <v-btn flat color="orange">Share</v-btn>
                         <v-btn flat color="orange">Explore</v-btn>
+                        <v-spacer></v-spacer>
+                        <v-tooltip bottom>
+                            <v-btn 
+                                icon 
+                                color="primary" 
+                                :to="{ name:'schools'}"
+                                slot="activator"
+                                large
+                            >
+                                <v-icon large>school</v-icon>
+                            </v-btn>
+                            <span>Back to Schools</span>
+                        </v-tooltip>
+                        
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -41,7 +55,7 @@ export default {
     },
     mounted() {
         this.$nextTick(() =>{
-            axios.get("http://localhost:9200/schools/_search?size=1&q=_id:" + this.id)
+            axios.get("http://localhost:9200/schools/_search?size=1&q=StateOrganizationId:" + this.id)
                 .then(res => this.school = res.data.hits.hits[0]._source)
                 .catch(err => alert(err))
         }) 
