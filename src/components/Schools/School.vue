@@ -114,7 +114,6 @@ export default {
     },
     methods: {
         rePopulate() {
-            
             axios.get("http://localhost:9200/schools/_search?size=4000&q=Organization:" + this.query)
                 .then(res => {
                     this.schools = res.data.hits.hits
