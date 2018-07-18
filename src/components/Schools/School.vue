@@ -49,15 +49,24 @@
                                     </td>
                                 </template>
                             </v-data-table>
+                            <v-btn 
+                                @click="allView" 
+                                color="success" 
+                                round
+                                :disabled="query == '*'"
+                            >
+                                All
+                            </v-btn>
                             <template v-for="(letter, i) in letters">
                                 <v-btn
                                     @click="switchView(letter)" 
                                     color="info" 
                                     round 
                                     :key="i"
+                                    :disabled="query == letter.value"
                                 >
                                     {{ letter.value }}
-                            </v-btn>
+                                </v-btn>
                             </template>
                         </template>
                     </v-flex>
@@ -75,7 +84,7 @@ export default {
         return {
             img: require('@/assets/jumbotron/schools.jpg'),
             schools: [],
-            query: '',
+            query: '*',
             search: '',
             loading: true,
             headers: [
@@ -133,6 +142,10 @@ export default {
         },
         switchView(letter) {
             this.query = letter.value
+            this.search = ''
+        },
+        allView() {
+            this.query = '*'
             this.search = ''
         }
     },
