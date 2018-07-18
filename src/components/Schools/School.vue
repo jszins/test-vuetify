@@ -27,8 +27,10 @@
                                 :items="schools"
                                 :headers="headers"
                                 :search="search"
+                                :loading="loading"
                                 class="elevation-1"
                             >
+                                <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
                                 <template slot="items" slot-scope="props" >
                                     <td>{{ props.item._source.Organization }}</td>
                                     <td class="text-xs-right">{{ props.item._source.Physical_City }}</td>
@@ -64,9 +66,9 @@ export default {
         return {
             img: require('@/assets/jumbotron/schools.jpg'),
             schools: [],
-            loading: false,
             query: '',
             search: '',
+            loading: true,
             headers: [
                 {
                     text: 'Organization',
@@ -112,8 +114,12 @@ export default {
     },
     methods: {
         rePopulate() {
+            
             axios.get("http://localhost:9200/schools/_search?size=4000&q=Organization:" + this.query)
-                .then(res => this.schools = res.data.hits.hits)
+                .then(res => {
+                    this.schools = res.data.hits.hits
+                    this.loading = false
+                })
                 .catch(err => alert(err))
         },
         switchView(letter) {
@@ -123,13 +129,17 @@ export default {
     },
     watch: {
         query() {
+            this.loading = true
             this.rePopulate()
         }
     },
     mounted() {
         this.$nextTick(() =>{
             axios.get("http://localhost:9200/schools/_search?size=4000&q=*:*")
-                .then(res => this.schools = res.data.hits.hits)
+                .then(res => {
+                    this.schools = res.data.hits.hits 
+                    this.loading = false
+                })
                 .catch(err => alert(err))
         })
     }
