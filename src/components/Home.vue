@@ -47,7 +47,7 @@
                     </v-card-text>
                     <v-card-actions class="layout justify-center">
                       <v-tooltip bottom>
-                        <v-btn slot="activator" color="primary">Go</v-btn>
+                        <v-btn slot="activator" :to="{ name: 'staff'}" color="primary">Go</v-btn>
                         <span>See our Staff!</span>
                       </v-tooltip>
                     </v-card-actions>
@@ -89,7 +89,7 @@
                     </v-card-text>
                     <v-card-actions class="layout justify-center">
                       <v-tooltip bottom>
-                        <v-btn slot="activator" color="primary">Go</v-btn>
+                        <v-btn slot="activator" :to="{ name: 'schools'}" color="primary">Go</v-btn>
                         <span>See all Schools!</span>
                       </v-tooltip>
                     </v-card-actions>
@@ -189,12 +189,8 @@
 <script>
 export default {
   name: 'Home',
-  props: {
-    msg: String
-  },
   data () {
     return {
-      title: 'henlo',
       address: '2100 Freeway Boulevard, Brooklyn Center, MN 55430',
       phone: '763-560-2262',
       autumn_mn: require('@/assets/parallax/minnesota-skyline.jpg'),

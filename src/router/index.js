@@ -19,6 +19,8 @@ import SchoolDetails from "@/components/Schools/SchoolDetails";
 
 import Search from '@/components/Search/Search'
 
+import StaffIndex from '@/components/Staff/StaffIndex'
+
 
 
 Vue.use(Router)
@@ -48,7 +50,7 @@ let router = new Router({
                 {
                     path:'',
                     component: School,
-                    name: 'school'
+                    name: 'schools'
                 },
                 {
                     path:':id',
@@ -89,6 +91,11 @@ let router = new Router({
             path:'/search',
             component: Search,
             name:'search'
+        },
+        {
+            path:'/staff',
+            component: StaffIndex,
+            name:'staff'
         },
         {
             path: '**',

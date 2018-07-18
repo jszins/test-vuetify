@@ -115,7 +115,7 @@ export default {
         {
           icon: 'school',
           title: 'Schools',
-          name:'school',
+          name:'schools',
           msg: 'View Schools'
         },
         {
