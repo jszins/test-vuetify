@@ -58,7 +58,7 @@
                                             <v-list-tile-title v-html="result._source.Organization"></v-list-tile-title>
                                             <v-list-tile-sub-title v-html="result._source.Physical_City"></v-list-tile-sub-title>
                                         </v-list-tile-content>
-                                            <v-btn round color="success" :to="{ name: 'schoolDetails', params: { id: result._source.StateOrganizationId} }">
+                                            <v-btn round color="primary" :to="{ name: 'schoolDetails', params: { id: result._source.StateOrganizationId} }">
                                                 <v-icon>forward</v-icon>
                                             </v-btn>
                                         </v-list-tile>

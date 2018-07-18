@@ -20,6 +20,7 @@ import SchoolDetails from "@/components/Schools/SchoolDetails";
 import Search from '@/components/Search/Search'
 
 import StaffIndex from '@/components/Staff/StaffIndex'
+import Staff from '@/components/Staff/Staff'
 
 
 
@@ -95,7 +96,14 @@ let router = new Router({
         {
             path:'/staff',
             component: StaffIndex,
-            name:'staff'
+            children: [
+                {
+                    path:'',
+                    component: Staff,
+                    name:'staff'
+                }
+            ]
+
         },
         {
             path: '**',

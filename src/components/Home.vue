@@ -1,5 +1,5 @@
 <template>
-<div id="home">
+  <div id="home">
    <v-app light>
     <v-content>
       <section>
@@ -12,8 +12,7 @@
             ></v-carousel-item>
           </v-carousel>
       </section>
-      
-
+    
       <section>
         <v-layout
           column
@@ -110,9 +109,7 @@
           >           
           </v-layout>
         </v-parallax>
-      </section>
-
-      
+      </section>     
 
       <section>
         <v-container grid-list-xl>
