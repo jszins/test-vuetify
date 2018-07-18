@@ -22,6 +22,9 @@ import Search from '@/components/Search/Search'
 import StaffIndex from '@/components/Staff/StaffIndex'
 import Staff from '@/components/Staff/Staff'
 
+import TournamentIndex from '@/components/Tournaments/TournamentIndex'
+import Tournament from '@/components/Tournaments/Tournament'
+
 
 
 Vue.use(Router)
@@ -104,6 +107,17 @@ let router = new Router({
                 }
             ]
 
+        },
+        {
+            path:'/tournaments',
+            component: TournamentIndex,
+            children: [
+                {
+                    path:'',
+                    component: Tournament,
+                    name:'tournaments'
+                }
+            ]
         },
         {
             path: '**',

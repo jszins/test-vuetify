@@ -125,6 +125,12 @@ export default {
           msg: 'View Regions'
         },
         {
+          icon: 'stars',
+          title: 'Tournaments',
+          name: 'tournaments',
+          msg: 'View Tournaments'
+        },
+        {
           icon: 'directions_run',
           title: 'Activities',
           name: 'activity',
