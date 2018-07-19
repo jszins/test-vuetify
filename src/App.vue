@@ -119,12 +119,6 @@ export default {
           msg: 'View Schools'
         },
         {
-          icon: 'terrain',
-          title: 'Regions',
-          name: 'region',
-          msg: 'View Regions'
-        },
-        {
           icon: 'stars',
           title: 'Tournaments',
           name: 'tournaments',

@@ -94,13 +94,18 @@ export default {
             ],
             activities: [
                 {
-                    text: 'Girls Tennis',
-                    value: 'girls_tennis'
+                    text: 'Boys Hockey',
+                    value: 'boys_hockey'
                 },
                 {
                     text: 'Boys Soccer',
                     value: 'boys_soccer'
+                },
+                {
+                    text: 'Girls Tennis',
+                    value: 'girls_tennis'
                 }
+                
             ]
         }
     },
@@ -109,6 +114,7 @@ export default {
             this.subheader = activity.text
             axios.get("http://localhost:9200/" + activity.value + "/_search?size=50")
                 .then(res => this.tournaments = res.data.hits.hits)
+                .catch(err => alert(err))
         }
     }
 }

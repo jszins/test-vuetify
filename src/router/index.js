@@ -10,8 +10,6 @@ import ActivityDetails from '@/components/Activities/ActivityDetails'
 import AdminIndex from '@/components/Admins/AdminIndex'
 import SignIn from '@/components/Admins/SignIn'
 
-import RegionIndex from '@/components/Regions/RegionIndex'
-import Region from '@/components/Regions/Region'
 
 import SchoolIndex from '@/components/Schools/SchoolIndex'
 import School from '@/components/Schools/School'
@@ -61,17 +59,6 @@ let router = new Router({
                     component: SchoolDetails,
                     name: 'schoolDetails'
                 }
-            ]
-        },
-        {
-            path:'/regions',
-            component: RegionIndex,
-            children: [    
-                {
-                    path:'',
-                    component: Region,
-                    name:'region'
-                },
             ]
         },
         {
