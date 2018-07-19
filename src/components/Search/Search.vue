@@ -58,9 +58,36 @@
                                             <v-list-tile-title v-html="result._source.Organization"></v-list-tile-title>
                                             <v-list-tile-sub-title v-html="result._source.Physical_City"></v-list-tile-sub-title>
                                         </v-list-tile-content>
-                                            <v-btn round color="primary" :to="{ name: 'schoolDetails', params: { id: result._source.StateOrganizationId} }">
-                                                <v-icon>forward</v-icon>
-                                            </v-btn>
+                                        <v-btn round color="primary" :to="{ name: 'schoolDetails', params: { id: result._source.StateOrganizationId} }">
+                                            <v-icon>forward</v-icon>
+                                        </v-btn>
+                                        </v-list-tile>
+                                    </template>
+                                </v-list>
+                            </v-flex>
+                            <v-flex xs12 sm6>
+                                <v-list two-line>
+                                    <v-subheader>{{ tourneyHead }}</v-subheader>
+                                    <v-btn 
+                                        @click="toggleTourneys" 
+                                        color="info"
+                                        round
+                                    >
+                                        Toggle
+                                    </v-btn>
+                                    <template 
+                                        v-for="(result, i) in tourneyBuf"
+                                        v-if="tourneyEnabler"
+                                    >                                        
+                                        <v-list-tile
+                                            :key="i"
+                                        >
+                                        <v-list-tile-content>
+                                            <v-list-tile-title v-html="result._source.Activity"></v-list-tile-title>
+                                            <v-list-tile-sub-title v-html="result._source.Section"></v-list-tile-sub-title>
+                                            <v-list-tile-sub-title v-html="result._source.Date"></v-list-tile-sub-title>
+                                            <v-list-tile-sub-title v-html="result._source.Location"></v-list-tile-sub-title>
+                                        </v-list-tile-content>
                                         </v-list-tile>
                                     </template>
                                 </v-list>
@@ -84,19 +111,25 @@ export default {
             staffBuf: [],
             schools: [],
             schoolBuf: [],
+            tourneys: [],
+            tourneyBuf: [],
             staffEnabler: true,
             staffHead: 'Staff',
             schoolEnabler: true,
-            schoolHead: 'Schools'
+            schoolHead: 'Schools',
+            tourneyEnabler: true,
+            tourneyHead: 'Tournaments'
         }
     },
     methods: {
         search () {
             this.staffBuf = this.staff
             this.schoolBuf = this.schools
+            this.tourneyBuf = this.tourneys
             if(this.query == ''){
                 this.staffBuf = []
                 this.schoolBuf = []
+                this.tourneyBuf
                 return
             }  
             this.staff = []
@@ -108,6 +141,10 @@ export default {
             axios.get('http://localhost:9200/schools/_doc/_search?size=50&q=Organization:' + this.query)
                 .then(res => this.schools = res.data.hits.hits)
                 .then(() => this.schoolsBuf = this.schools)
+                .catch(err => alert(err))
+            axios.get('http://localhost:9200/boys_hockey,boys_soccer,girls_tennis/_doc/_search?size=70&q=Activity:' + this.query)
+                .then(res => this.tourneys = res.data.hits.hits)
+                .then(() => this.tourneyBuf = this.tourneys)
                 .catch(err => alert(err))
         },
         toggleStaff() {
@@ -126,6 +163,15 @@ export default {
             }
             else{
                 this.schoolHead = 'Schools - Disabled'
+            }
+        },
+        toggleTourneys() {
+            this.tourneyEnabler = !this.tourneyEnabler
+            if(this.tourneyEnabler == true){
+                this.tourneyHead = 'Tournaments'
+            }
+            else{
+                this.tourneyHead = 'Tournaments - Disabled'
             }
         }
     },
