@@ -2,72 +2,67 @@
 <div id="schoolDetails">
     <v-container>
         <v-layout row wrap>
-            <v-flex xs12 sm6 offset-sm3>
-                <v-card>
-                    <v-subheader>Details about selected tournament</v-subheader>
-                    <v-card-media
-                        src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
-                        height="200px"
-                    ></v-card-media>
-                    <v-card-title primary-title>
-                        <div>
-                            <h3 class="headline mb-0">{{ activeTournament.Activity }} | {{ activeTournament.Section}}</h3>
-                            <div>
-                                Date: {{ activeTournament.Date }}<br>
-                                Location: {{ activeTournament.Location }}<br>
-                                Manager: {{ activeTournament.Manager}}<br>
-                            </div>
-                        </div>
-                    </v-card-title>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-tooltip bottom>
-                            <v-btn 
-                                icon 
-                                color="primary" 
-                                :to="{ name:'tournaments'}"
-                                slot="activator"
-                                large
-                            >
-                                <v-icon large>stars</v-icon>
-                            </v-btn>
-                            <span>Back to Tournaments</span>
-                        </v-tooltip>
-                    </v-card-actions>
-                </v-card>
-                <v-card v-for="(tournament,i) in tournaments" :key="i" v-if="id != tournament._id">
+            <v-container>
+                <v-flex xs12 sm6 offset-sm3>
+                    <v-jumbotron>
+                        <v-container fill-height>
+                            <v-layout align-center>
+                                <v-flex>
+                                <h3 class="display-3">{{ activeTournament.Activity}}</h3>
+                                <span class="subheading">{{ activeTournament.Section }}<br></span>
+                                <span class="subheading">{{ activeTournament.Date }}<br></span>
+                                <span class="subheading">Location: {{ activeTournament.Location }}<br></span>
+                                <v-divider class="my-3"></v-divider>
+                                <div class="title mb-3">Manager: {{ activeTournament.Manager }}</div>
+                                </v-flex>
+                            </v-layout>
+                        </v-container>
+                    </v-jumbotron>
+                </v-flex>
+            </v-container>
+            <v-container>
+                <v-flex xs12 sm6 offset-sm3>
                     <v-subheader>Other section tournaments</v-subheader>
-                    <v-card-media
-                        src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
-                        height="200px"
-                    ></v-card-media>
-                    <v-card-title primary-title>
-                        <div>
-                            <h3 class="headline mb-0">{{ tournament._source.Activity }} | {{ tournament._source.Section}}</h3>
-                            <div>
-                                Date: {{ tournament._source.Date }}<br>
-                                Location: {{ tournament._source.Location }}<br>
-                                Manager: {{ tournament._source.Manager}}<br>
-                            </div>
-                        </div>
-                    </v-card-title>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-tooltip bottom>
-                            <v-btn 
-                                icon 
-                                color="primary" 
-                                :to="{ name:'tournaments'}"
-                                slot="activator"
-                                large
-                            >
-                                <v-icon large>stars</v-icon>
-                            </v-btn>
-                            <span>Back to Tournaments</span>
-                        </v-tooltip>
-                    </v-card-actions>
-                </v-card>
-            </v-flex>
+                    <template v-for="(tournament,i) in tournaments">
+                        <v-card  :key="i" v-if="id != tournament._id">
+                            <v-card-media
+                                src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
+                                height="200px"
+                            ></v-card-media>
+                            <v-card-title primary-title>
+                                <div>
+                                    <h3 class="headline mb-0">{{ tournament._source.Activity }} | {{ tournament._source.Section}}</h3>
+                                    <div>
+                                        Date: {{ tournament._source.Date }}<br>
+                                    </div>
+                                </div>
+                            </v-card-title>
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn
+                                    round
+                                    color="info"
+                                    @click="changeTourney(tournament)"
+                                >
+                                    See this
+                                </v-btn>
+                                <v-tooltip bottom>
+                                    <v-btn 
+                                        icon 
+                                        color="primary" 
+                                        :to="{ name:'tournaments'}"
+                                        slot="activator"
+                                        large
+                                    >
+                                        <v-icon large>stars</v-icon>
+                                    </v-btn>
+                                    <span>Back to Tournaments</span>
+                                </v-tooltip>
+                            </v-card-actions>
+                        </v-card>
+                    </template>    
+                </v-flex>
+            </v-container>  
         </v-layout>
     </v-container>
 </div> 
@@ -92,9 +87,13 @@ export default {
         },
         activity() {
             this.activity = this.$route.params.activity
-        },
-        id() {
-            this.id = this.$route.params.id
+        }
+    },
+    methods: {
+        changeTourney(tournament){
+            this.id = tournament._id
+            this.activeTournament = tournament._source
+            window.scrollTo(0, 0)
         }
     },
     mounted() {

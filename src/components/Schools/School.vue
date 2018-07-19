@@ -43,7 +43,7 @@
                                     <td class="text-xs-right">{{ props.item._source.Phone }}</td>
                                     <td class="text-xs-right">{{ props.item._source.Mailing_Line_1 }}</td>
                                     <td class="text-xs-right">
-                                        <v-btn icon color="primary" :to="{ name: 'schoolDetails', params: { id: props.item._source.StateOrganizationId}}">
+                                        <v-btn icon color="primary" :to="{ name: 'schoolDetails', params: { id: props.item._id}}">
                                             <v-icon>forward</v-icon>
                                         </v-btn>
                                     </td>

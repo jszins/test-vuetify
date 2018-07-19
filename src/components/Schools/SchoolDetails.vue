@@ -26,7 +26,7 @@
                             :href="school.Web_URL"
                             target="blank"
                         >
-                            Check {{ school.Organization }} out
+                            Their Site
                         </v-btn>
                         <v-spacer></v-spacer>
                         <v-tooltip bottom>

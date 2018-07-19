@@ -14,6 +14,27 @@
                                 </v-layout>
                             </v-container>
                         </v-jumbotron>
+                        <v-container>
+                            <v-flex xs12 sm6 offset-sm3>
+                                <v-list two-line>
+                                    <v-subheader>Our Staff</v-subheader>
+                                    <template v-for="(person, i) in staff">
+                                        <v-list-tile :key="i + '-tile'">
+                                            <v-list-tile-content>
+                                                <v-list-tile-title v-html="person._source.Name"></v-list-tile-title>
+                                                <v-list-tile-sub-title v-html="person._source.Position"></v-list-tile-sub-title>
+                                                <v-spacer></v-spacer>
+                                            </v-list-tile-content>
+                                            <v-list-tile-action>
+                                                <v-list-tile-action-text class="subheading">Extension: {{ person._source.Extension }}</v-list-tile-action-text>
+                                                <v-list-tile-action-text class="subheading">{{ person._source.Email }}</v-list-tile-action-text>
+                                            </v-list-tile-action>
+                                        </v-list-tile>
+                                        <v-divider :key="i + '-divider'"></v-divider>
+                                    </template>
+                                </v-list>
+                            </v-flex>
+                        </v-container>
                     </v-flex>
             </v-container>
         </v-content>   
@@ -21,11 +42,23 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     data() {
         return {
-            img: require('@/assets/jumbotron/staff.jpg')
+            img: require('@/assets/jumbotron/staff.jpg'),
+            staff: []
         }
+    },
+    mounted() {
+        this.$nextTick(() =>{
+            axios.get("http://localhost:9200/staff/_search?size=25")
+                .then(res => {
+                    this.staff = res.data.hits.hits 
+                })
+                .catch(err => alert(err))
+        })
     }
 }
 </script>
