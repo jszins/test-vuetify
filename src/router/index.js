@@ -106,7 +106,7 @@ let router = new Router({
                     name:'tournaments'
                 },
                 {
-                    path:':activity/:section',
+                    path:':activity/:section/:id',
                     component: TournamentDetails,
                     name:'tourneyDetails'
                 }

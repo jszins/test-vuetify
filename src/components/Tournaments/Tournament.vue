@@ -62,6 +62,18 @@
                                 <td>{{ props.item._source.Activity }}</td>
                                 <td>{{ props.item._source.Date }}</td>
                                 <td>{{ props.item._source.Location }}</td>
+                                <td class="text-xs-right">
+                                    <v-btn 
+                                        icon 
+                                        color="primary" 
+                                        :to="{ name: 'tourneyDetails', params:{ 
+                                                                            section: props.item._source.Section, 
+                                                                            activity: props.item._index,
+                                                                            id: props.item._id}}"
+                                    >
+                                        <v-icon>forward</v-icon>
+                                    </v-btn>
+                                </td>
                             </template>
                         </v-data-table>
                     </template>

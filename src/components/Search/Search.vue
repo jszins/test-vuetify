@@ -91,7 +91,14 @@
                                             <v-list-tile-sub-title v-html="result._source.Date"></v-list-tile-sub-title>
                                             <v-list-tile-sub-title v-html="result._source.Location"></v-list-tile-sub-title>
                                         </v-list-tile-content>
-                                        <v-btn round color="primary" :to="{ name: 'tourneyDetails', params: { activity: result._index, section: result._source.Section }}">
+                                        <v-btn 
+                                            round 
+                                            color="primary" 
+                                            :to="{ name: 'tourneyDetails', params:{ 
+                                                                                activity: result._index, 
+                                                                                section: result._source.Section,
+                                                                                id: result._id  }}"
+                                        >
                                             <v-icon>forward</v-icon>
                                         </v-btn>
                                         </v-list-tile>
