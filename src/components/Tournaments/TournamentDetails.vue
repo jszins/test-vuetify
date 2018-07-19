@@ -3,43 +3,34 @@
     <v-container>
         <v-layout row wrap>
             <v-flex xs12 sm6 offset-sm3>
-                <v-card>
+                <v-card v-for="(tournament,i) in tournaments" :key="i">
                     <v-card-media
                         src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
                         height="200px"
                     ></v-card-media>
                     <v-card-title primary-title>
                         <div>
-                            <h3 class="headline mb-0">{{ school.Organization }}</h3>
+                            <h3 class="headline mb-0">{{ tournament._source.Activity }} | {{ tournament._source.Section}}</h3>
                             <div>
-                                {{ school.Mailing_Line_1 }}<br>
-                                {{ school.Physical_City}}, MN<br>
-                                {{ school.Mailing_Zip }}<br>
-                                {{ school.Phone }}
+                                Date: {{ tournament._source.Date }}<br>
+                                Location: {{ tournament._source.Location }}<br>
+                                Manager: {{ tournament._source.Manager}}<br>
                             </div>
                         </div>
                     </v-card-title>
                     <v-card-actions>
-                        <v-btn 
-                            flat 
-                            color="info"
-                            :href="school.Web_URL"
-                            target="blank"
-                        >
-                            Check {{ school.Organization }} out
-                        </v-btn>
                         <v-spacer></v-spacer>
                         <v-tooltip bottom>
                             <v-btn 
                                 icon 
                                 color="primary" 
-                                :to="{ name:'schools'}"
+                                :to="{ name:'tournaments'}"
                                 slot="activator"
                                 large
                             >
-                                <v-icon large>school</v-icon>
+                                <v-icon large>stars</v-icon>
                             </v-btn>
-                            <span>Back to Schools</span>
+                            <span>Back to Tournaments</span>
                         </v-tooltip>
                     </v-card-actions>
                 </v-card>
@@ -55,24 +46,27 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            id: this.$route.params.id,
-            school: {}, 
+            section: this.$route.params.section,
+            activity: this.$route.params.activity,
+            tournaments: [], 
         }
     },
     watch: {
-        id() {
-            this.id = this.$route.params.id
+        section() {
+            this.section = this.$route.params.section
+        },
+        activity() {
+            this.activity = this.$route.params.activity
         }
     },
     mounted() {
         this.$nextTick(() =>{
-            axios.get("http://localhost:9200/schools/_search?size=1&q=_id:" + this.id)
+            axios.get("http://localhost:9200/" + this.activity + "/_search?size=25&q=Section:" + this.section)
                 .then(res => {
-                    this.school = res.data.hits.hits[0]._source
+                    this.tournaments = res.data.hits.hits
                 })
-                .catch(() => alert('Whoops! No school selected'))
+                .catch(() => alert('Whoops! No tournament selected'))
         }) 
     }
 }
 </script>
-

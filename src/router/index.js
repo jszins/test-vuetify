@@ -22,6 +22,7 @@ import Staff from '@/components/Staff/Staff'
 
 import TournamentIndex from '@/components/Tournaments/TournamentIndex'
 import Tournament from '@/components/Tournaments/Tournament'
+import TournamentDetails from '@/components/Tournaments/TournamentDetails'
 
 
 
@@ -103,6 +104,11 @@ let router = new Router({
                     path:'',
                     component: Tournament,
                     name:'tournaments'
+                },
+                {
+                    path:':activity/:section',
+                    component: TournamentDetails,
+                    name:'tourneyDetails'
                 }
             ]
         },
