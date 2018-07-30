@@ -103,19 +103,23 @@ export default {
             activities: [
                 {
                     text: 'Boys Hockey',
-                    value: 'boys_hockey'
+                    value: 'boys_hockey',
+                    size: 24
                 },
                 {
                     text: 'Boys Soccer',
-                    value: 'boys_soccer'
+                    value: 'boys_soccer',
+                    size: 24
                 },
                 {
                     text: 'Girls Tennis',
-                    value: 'girls_tennis'
+                    value: 'girls_tennis',
+                    size: 20
                 },
                 {
                     text: 'Girls Basketball',
-                    value: 'girls_basketball'
+                    value: 'girls_basketball',
+                    size: 118
                 }
                 
             ]
@@ -124,7 +128,7 @@ export default {
     methods: {
         populateData(activity){
             this.subheader = activity.text
-            axios.get("http://localhost:9200/" + activity.value + "/_search?size=118")
+            axios.get("http://localhost:9200/" + activity.value + "/_search?size=" + activity.size)
                 .then(res => this.tournaments = res.data.hits.hits)
                 .catch(err => alert(err))
         }

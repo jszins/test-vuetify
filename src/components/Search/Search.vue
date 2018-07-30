@@ -155,7 +155,7 @@ export default {
                 .then(res => this.schools = res.data.hits.hits)
                 .then(() => this.schoolsBuf = this.schools)
                 .catch(err => alert(err))
-            axios.get('http://localhost:9200/boys_hockey,boys_soccer,girls_tennis/_doc/_search?size=70&q=Activity:' + this.query)
+            axios.get('http://localhost:9200/boys_hockey,boys_soccer,girls_tennis,girls_basketball/_doc/_search?size=118&q=Activity:' + this.query)
                 .then(res => this.tourneys = res.data.hits.hits)
                 .then(() => this.tourneyBuf = this.tourneys)
                 .catch(err => alert(err))
