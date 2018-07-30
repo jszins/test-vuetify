@@ -34,6 +34,7 @@
                                     <h3 class="headline mb-0">{{ tournament._source.Activity }} | {{ tournament._source.Section}}</h3>
                                     <div>
                                         Date: {{ tournament._source.Date }}<br>
+                                        Info: {{ tournament._source.Location }}
                                     </div>
                                 </div>
                             </v-card-title>
